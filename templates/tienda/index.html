@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Celeste - Tienda{% endblock %}
+
+{% block content %}
+	<br><br><br><br><br>
+	<div class="container">
+		<ul class="row list-inline carousel-inner">
+			{% for producto in productos %}
+			<div class="col-xs-12 col-sm-4 h4">
+			    <ul id="da-thumbs" class="da-thumbs">
+			    	<li>
+			    		<a>
+			    			<img class="img-responsive imgef" src="/media/{{producto.foto}}">
+			    				<div><span>
+			    					Ref: {{producto.ref}}<br/>
+			    					Categoria: {{producto.categoria}}<br/>
+			    					Descripcion: {{producto.descripcion}}<br/>
+			    					Talla: {{producto.talla}}<br/>
+			    					Precio: {{producto.precio}}
+			    				</span></div>
+			    		</a>
+			    	</li>
+			    </ul>
+			 </div>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+
+

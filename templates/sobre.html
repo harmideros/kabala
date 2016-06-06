@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Celeste - Sobre Celeste{% endblock %}
+
+{% block content %}
+		<br><br><br><br><br>
+        <div>
+        	<img src="{% static 'img/banner.jpg' %}" class="img-responsive img-ef" alt="imagen4">
+        </div>
+
+        <h1 class=" text-center">Sobre Celeste</h1>
+        <hr>
+
+        <div class="navbar">
+        	<p class="text-center text-muted lead">Celeste es una empresa dedicada a la venta de ropa femenina con un estilo moderno y elegante. <br>
+        	    Dirigida a todo tipo de mujer que quiera en su guardarropa prendas especiales para lucir cada mas bella y a la moda. <br>
+        	    Celeste nació en septiembre del 2011 presentando una nueva forma de vestir y muy exclusiva <br> con la mejor calidad de prendas nacionales y americanas con perfectos terminados.</p>
+        </div>
+	        <div class="row">
+	        <div class="col-xs-12 col-sm-4">
+	         	<img src="{% static 'img/local.png' %}" class="img-responsive img-rounded" alt="img">
+	        </div>
+	        <div class="col-xs-12 col-sm-4"> 
+	            <img src="{% static 'img/Celeste-02.jpg' %}" class="img-responsive img-rounded" alt="img2">
+	        </div>
+	    </div>
+	    <br><br>
+
+        
+{% endblock %}

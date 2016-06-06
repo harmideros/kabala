@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Celeste - Contacto{% endblock %}
+
+{% block content %}
+<br><br><br><br><br><br><br><br>
+
+<h1>{{ titulo }}</h1>
+
+{% if form %}
+<form method='POST' action=''>
+	{% csrf_token %}
+	{{ form.nombre_apellido }}
+	{{ form.email }}
+	{{ form.celular }}
+	{{ form.mensaje }}
+	<br>
+	<input class="btn btn-default text-right" type="submit" value="Enviar">
+</form>
+{% endif %}
+
+{% endblock %}

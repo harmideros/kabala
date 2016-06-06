@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Celeste - Contacto{% endblock %}
+
+{% block content %}
+	<br><br><br>
+	<div class="map container">
+		<figure class="dropdown-menu">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9191273774877!2d-77.28587598594261!3d1.2164539623300823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed481a01bfa15%3A0x9180495865beefab!2sCentro+Comercial+Bombona!5e0!3m2!1ses-419!2sco!4v1460480010437" style="border:0"></iframe>
+		</figure>
+	</div><br>
+	<div class="row list-inline">
+        <div class="col-xs-12 col-sm-1">
+        </div>
+        <div class="col-xs-12 col-sm-5">
+                <label class="col-sm-2"></label>
+                <div class="col-sm-8">
+                    {% if form %}
+                    <form method='POST' action=''>
+                        {% csrf_token %}
+                        {{ form.nombre_apellido }}
+                        {{ form.email }}
+                        {{ form.celular }}
+                        {{ form.mensaje }}
+                        <br>
+                    <input class="btn btn-default text-right" type="submit", value="Enviar">
+                    </form>
+                    {% endif %}
+                </div>
+        </div>
+        <div class="col-xs-12 col-sm-1">
+        </div>
+        <div class="col-xs-12 col-sm-3">
+        <br><br><br><br> 
+            <li class="h4 text-muted">
+                <span class="glyphicon glyphicon-envelope"><a href="#"> celestestore@gmail.com</a></span>
+            </li><br>
+            <li class="h4 text-muted">
+                <span class="glyphicon glyphicon-phone"> 3113464324</span>
+            </li><br>
+            <li class="h4 text-muted">
+                <span class="glyphicon glyphicon-map-marker"> Centro Comercial y Artesanal Bomboná.<br>
+                Local 1 Autoconstrucción,<br>
+                Pasto - Colombia<br></span>
+            </li>
+        </div>
+    </div>
+{% endblock %}
