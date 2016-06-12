@@ -6,17 +6,21 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-#    url(r'^home/$', celeste),
+    url(r'^$', celeste, name="home"),
     url(r'^moda/$', moda),
-    url(r'^sobre/$', sobre),
+    url(r'^sobre/$', sobre, name="about"),
 #    url(r'^tienda/$', tienda),
 #    url(r'^contacto/$', contacto),
     url(r'^tienda/', include('apps.tienda.urls'), name="tienda"),
-    url(r'^home/', include('apps.login.urls')),
+#    url(r'^home/', include('apps.login.urls')),
     url(r'^registro/', include('apps.registrar.urls')),
     url(r'^contacto/', include('apps.registrar.urls')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, } ),
+    url(regex=r'^media/(?P<path>.*)$',
+			view='django.views.static.serve',
+			kwargs={'document_root': settings.MEDIA_ROOT}),
+#    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, } ),
     url(r'^accounts/', include('apps.accounts.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
 #if settings.DEBUG:

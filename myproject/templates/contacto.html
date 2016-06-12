@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block title %}Celeste - Contacto{% endblock %}
 
 {% block content %}
@@ -23,7 +24,7 @@
                         {{ form.celular }}
                         {{ form.mensaje }}
                         <br>
-                    <input class="btn btn-default text-right" type="submit", value="Enviar">
+                    <input class="btn btn-default text-right" type="submit", value="{% trans 'Enviar' %}">
                     </form>
                     {% endif %}
                 </div>
@@ -33,14 +34,14 @@
         <div class="col-xs-12 col-sm-3">
         <br><br><br><br> 
             <li class="h4 text-muted">
-                <span class="glyphicon glyphicon-envelope"><a href="#"> celestestore@gmail.com</a></span>
+                <span class="glyphicon glyphicon-envelope"><a href="#" class="nolinea text-muted"> celestestore@gmail.com</a></span>
             </li><br>
             <li class="h4 text-muted">
                 <span class="glyphicon glyphicon-phone"> 3113464324</span>
             </li><br>
             <li class="h4 text-muted">
-                <span class="glyphicon glyphicon-map-marker"> Centro Comercial y Artesanal Bomboná.<br>
-                Local 1 Autoconstrucción,<br>
+                <span class="glyphicon glyphicon-map-marker"> {% trans 'Centro Comercial y Artesanal Bomboná' %}.<br>
+                {% trans 'Local 1 Autoconstrucción' %},<br>
                 Pasto - Colombia<br></span>
             </li>
         </div>

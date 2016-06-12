@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -27,7 +28,7 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+        {{ lang.1 }}
         <nav class="container-fluid">          
 
             <div class="modal fade" id="miModal">
@@ -38,10 +39,10 @@
                             <ul class="nav navbar-nav navbar-right"><!-- navbar-right-->
                               {% if user.is_authenticated %}
                                 <li><a href="{% url 'accounts.index' %}">{{ user.username }}</a></li>
-                                <li><a href="{% url 'accounts.logout' %}">Logout</a></li>
+                                <li><a href="{% url 'accounts.logout' %}">{% trans "Cerara Sesion" %}</a></li>
                               {% else %}
-                                <li><a href="{% url 'accounts.registro' %}">Registro</a></li>
-                                <li><a href="{% url 'accounts.login' %}">Login</a></li>
+                                <li><a href="{% url 'accounts.registro' %}">{% trans "Registrarse" %}</a></li>
+                                <li><a href="{% url 'accounts.login' %}">{% trans "Iniciar Sesion" %}</a></li>
                               {% endif %}
                             </ul>
                         </div>
@@ -72,7 +73,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="row">
-                <legendf><h5 class="col-md-2 col-md-offset-10 text-right"data-toggle="modal" data-togglee="tooltip" data-placement="bottom" title="Iniciar sesion" data-target="#miModal">{{ user.username|upper }}{{ iniciar|upper }}<span class="glyphicon glyphicon-user"></span></h5></legendf>
+                <legendf><h5 class="col-md-2 col-md-offset-10 text-right"data-toggle="modal" data-togglee="tooltip" data-placement="bottom" title="{% trans 'Iniciar Sesion' %}" data-target="#miModal"> {% if user.is_authenticated %} {{ user.username|title }} {% else %} Iniciar Sesion {% endif %}<span class="glyphicon glyphicon-user"></span></h5></legendf>
             </div>
             
             <div class="container-fluid">
@@ -82,31 +83,46 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="{% static 'img/Celeste-01.png' %}" height=58 width=150>
+                    <a href="/home"><img src="{% static 'img/Celeste-01.png' %}" height=58 width=150></a>
                 </div>
 
                 <div class="collapse navbar-collapse h4" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="/sobre">Sobre Celeste</a></li>
-                        <li><a href="/tienda">Tienda</a></li>
+                        <li><a href="{% url 'home' %}">{% trans "Inicio" %}</a></li>
+                        <li><a href="{% url 'about' %}">{% trans "Sobre Celeste" %}</a></li>
+                        <li><a href="/tienda">{% trans "Tienda" %}</a></li>
                         <li class="dropdown">
                             <a href="/producto/reportar" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Casual</a></li>
-                                <li><a href="#">Elegante</a></li>
+                                <li><a href="#">{% trans "Casual" %}</a></li>
+                                <li><a href="#">{% trans "Elegante" %}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Playa</a></li>
-                                <li><a href="#">Fiesta</a></li>
+                                <li><a href="#">{% trans "Playa" %}</a></li>
+                                <li><a href="#">{% trans "Fiesta" %}</a></li>
                             </ul>
                         </li>
-                        <li><a href="/contacto">Contacto</a></li>
+                        <li><a href="/contacto">{% trans "Contacto" %}</a></li>
                     </ul>
                     <form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar">
+                        <!--<div class="form-group">
+                            <input type="text" class="form-control" placeholder="{% trans 'Buscar' %}">
                         </div>
-                        <button class="btn btn-default">Buscar</button>
+                        <button class="btn btn-default">{% trans "Buscar" %}</button>-->
+
+                        {% if user.is_authenticated %}
+                            <span class="navbar-form btn-celeste glyphicon glyphicon-shopping-cart"></span>
+                            <span class="btn-celeste" data-toggle="dropdown">Tu carrito, {{ user.username|title }} <span class="caret"></span></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">{% trans "blusa" %}</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">{% trans "pantalon" %}</a></li>
+                            </ul>
+                        {% else %}
+                            <a href="{% url 'accounts.login' %}" class=" navbar-form btn-celeste glyphicon glyphicon-shopping-cart"></a>
+                        {% endif %}
+
+
+                        
                         <ul class="navbar-form navbar-right">
                             <legendf class="icon-facebook app"></legendf>
                             <legendt class="icon-twitter app"></legendt>
@@ -126,26 +142,26 @@
         <br><br>
         <ul class="row list-inline navbar-default">
             <div class="col-xs-12 col-sm-4 h4 alisup linverder400">
-                <li class=" text-center">MI CUENTA</li><br>
+                <li class=" text-center">{% trans "MI CUENTA" %}</li><br>
                 <div class="text-muted">
-                    <li data-toggle="modal" data-placement="bottom" title="Iniciar sesion" data-target="#miModal">Iniciar sesion
+                    <li data-toggle="modal" data-placement="bottom" title="{% trans 'Iniciar Sesion' %}" data-target="#miModal">{% trans "Iniciar Sesion" %}
                     </li>
-                    <li><a href="#"class="text-muted">Registrar</a></li>
+                    <li><a href="{% url 'accounts.registro' %}"class="text-muted nolinea">{% trans "Registrar" %}</a></li>
                     <li><a href="#"class="text-muted">-</a></li><br>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4 h4 alisup linverder400 ">
-                <li class=" divider text-center">ENLACES RAPIDOS</li><br>
+                <li class="text-center">{% trans "ENLACES RAPIDOS" %}</li><br>
                 <div>
-                    <li><a href="/home" class="text-muted">Inicio</a></li>
-                    <li><a href="/contacto" class="text-muted">Nuestros datos</a></li>
-                    <li><a href="/contacto" class="text-muted">Encuentranos</a></li>
-                    <li><a href="/contacto" class="text-muted">contactenos</a></li><br>
+                    <li><a href="/home" class="text-muted nolinea">{% trans "Inicio" %}</a></li>
+                    <li><a href="/contacto" class="text-muted nolinea">{% trans "Nuestros datos" %}</a></li>
+                    <li><a href="/contacto" class="text-muted nolinea">{% trans "Encuentranos" %}</a></li>
+                    <li><a href="/contacto" class="text-muted nolinea">{% trans "Contactenos" %}</a></li><br>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4 h4">
-                <li class=" text-center">NUESTROS MEDIOS DE PAGO</li>
-                <li class=" text-center">SIGUENOS EN:
+                <li class=" text-center">{% trans "NUESTROS MEDIOS DE PAGO" %}</li>
+                <li class=" text-center">{% trans "SIGUENOS EN:" %}
                     <br><br>
                     <ul>
                         <legendf class="icon-facebook app"></legendf>
@@ -158,7 +174,7 @@
             </div>
         </ul>
         <div class="navbar-inverse nav">
-            <p class="text-ef h4 text-center">Celeste © 2016 - Celeste todos los derechos reservados - sitio web desarrollado por <a class="a-ef"href="https://www.instagram.com/efrain_diaz_/">Efrain Diaz</a></p>
+            <p class="text-ef h4 text-center">{% trans "Celeste © 2016 - Celeste todos los derechos reservados - sitio web desarrollado por " %}<a class="a-ef nolinea" href="https://www.instagram.com/efrain_diaz_/">Efrain Diaz</a></p>
         </div>
         </nav>
 

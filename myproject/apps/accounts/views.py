@@ -3,17 +3,22 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 
+from django.contrib.auth.hashers import make_password
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
-from .forms import RegistroUserForm
+from .forms import RegistroUserForm, EditarEmailForm, EditarContrasenaForm
 from .models import UserProfile
 
 # Create your views here.
 
 def registro_usuario_view(request):
+    if not request.session.exists(request.session.session_key):
+        request.session.create()
+    print (request.session.session_key)
     if request.method == 'POST':
         # Si el method es post, obtenemos los datos del formulario
         form = RegistroUserForm(request.POST, request.FILES)
@@ -52,7 +57,6 @@ def registro_usuario_view(request):
         form = RegistroUserForm()
     # Creamos el contexto
     context = {'form': form, 
-                'iniciar':iniciar
                 }
     # Y mostramos los datos
     return render(request, 'accounts/registro.html', context)
@@ -67,7 +71,9 @@ def index_view(request):
     return render(request, 'accounts/index.html')
 
 def login_view(request):
-    iniciar = 'iniciar sesion'
+    if not request.session.exists(request.session.session_key):
+        request.session.create()
+    print (request.session.session_key)
     if request.user.is_authenticated():
         return redirect(reverse('accounts.index'))
 
@@ -85,12 +91,40 @@ def login_view(request):
                 return redirect(reverse('accounts.login'))
         mensaje = 'Nombre de usuario o contraseña no valido'
         
-    return render(request, 'accounts/login.html', {'mensaje': mensaje, 'iniciar':iniciar})
+    return render(request, 'accounts/login.html', {'mensaje': mensaje})
 
 def logout_view(request):
     logout(request)
 #    messages.success(request, 'Te has desconectado con exito.')
 #    return redirect(reverse('accounts.logout'))
     mensaje = 'Desconectado con exito'
-    iniciar = 'iniciar sesion'
-    return render(request, 'accounts/login.html', {'mensaje': mensaje, 'iniciar':iniciar})
+    return render(request, 'accounts/login.html', {'mensaje': mensaje})
+
+
+def editar_email(request):
+    if request.method == 'POST':
+        form = EditarEmailForm(request.POST,request=request)
+        if form.is_valid():
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            messages.success(request, 'El email ha sido cambiado con exito')
+            return redirect(reverse('accounts.index'))
+    else:
+        form = EditarEmailForm(request=request, initial={'email': request.user.email})
+        return render(request, 'accounts/editar_email.html', {'form': form})
+
+
+def editar_contrasena(request):
+    if request.method == 'POST':
+        form = EditarContrasenaForm(request.POST)
+        if form.is_valid():
+            request.user.password = make_password(form.cleaned_data['password'])
+            request.user.save()
+            messages.success(request, 'La contraseña ha sido cambiada con exito!.')
+            messages.success(request, 'Es necesario introducir los datos para entrar.')
+            return redirect(reverse('accounts.index'))
+    else:
+        form = EditarContrasenaForm()
+    return render(request, 'accounts/editar_contrasena.html', {'form': form})
+
+    

@@ -24,7 +24,7 @@ legendy:hover{
 }
 
 body{
-	font-family: 'Open Sans', 'Sans-serif';
+	font-family: Quicksand-Light, 'Open Sans', 'Sans-serif';
 	background: #d1d1d1;
 }
 .navbar-nav>li>.dropdown-menu{
@@ -110,7 +110,7 @@ body{
 }
 
 .textc{
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: Quicksand-Light, Verdana, Arial, Helvetica, sans-serif;
 }
 
 .imgef{
@@ -118,5 +118,13 @@ body{
 }
 
 .efrain{
-    text-align: center
+    text-align: center;
+}
+
+.btn-celeste{
+    color: #C71282;
+}
+
+a.nolinea:link{
+    text-decoration: none;
 }

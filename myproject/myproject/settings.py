@@ -48,6 +48,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -124,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'es-co'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'America/Bogota'
 
@@ -133,6 +134,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+_ = lambda s: s
+
+LANGUAGES = (
+    ('es', _('Espanol')),
+    ('en', _('English')),
+    )
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+    )
 
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/accounts/logout'

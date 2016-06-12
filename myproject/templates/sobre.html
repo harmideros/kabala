@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Celeste - Sobre Celeste{% endblock %}
+{% load i18n %}
+{% block title %}Celeste - {% trans 'Sobre' %} Celeste{% endblock %}
 
 {% block content %}
 		<br><br><br><br><br>
@@ -8,7 +9,7 @@
         	<img src="{% static 'img/banner.jpg' %}" class="img-responsive img-ef" alt="imagen4">
         </div>
 
-        <h1 class=" text-center">Sobre Celeste</h1>
+        <h1 class=" text-center">{% trans 'Sobre Celeste' %}</h1>
         <hr>
 
         <div class="navbar">

@@ -7,7 +7,7 @@
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+  font-family: Quicksand-Light, sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -271,11 +271,58 @@ th {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+
+
+@font-face {
+font-family: Quicksand-Light;
+src: url('../fonts/Quicksand-Light.otf');
+}
+
+@font-face {
+font-family: Quicksand-Bold;
+src: url('../fonts/Quicksand-Bold.otf');
+}
+
+@font-face {
+font-family: Quicksand-Dash;
+src: url('../fonts/Quicksand-Dash.otf');
+}
+
+@font-face {
+font-family: Quicksand-Regular;
+src: url('../fonts/Quicksand-Regular.otf');
+}
+
+.quick-light {
+font-family: Quicksand-Light, serif;
+display:inline;
+}
+
+.quick-bold {
+font-weight:normal;
+font-family: Quicksand-Bold, serif;
+display:inline;
+}
+
+.quick-dash {
+font-weight:normal;
+font-family: Quicksand-Dash, serif;
+display:inline;
+}
+
+.quick-regular {
+font-family: Quicksand-Dash, serif;
+display:inline;
+}
+
+
+
 .glyphicon {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: Quicksand-Light, 'Glyphicons Halflings';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -901,7 +948,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Quicksand-Light, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -911,7 +958,7 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
+  font-family: Quicksand-Light;
   font-size: inherit;
   line-height: inherit;
 }
@@ -1000,7 +1047,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: Quicksand-Light;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1338,7 +1385,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Quicksand-Light, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 code {
   padding: 2px 4px;
@@ -5592,7 +5639,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Quicksand-Light, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   line-height: 1.4;
@@ -5700,7 +5747,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Quicksand-Light, Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -5957,7 +6004,7 @@ button.close {
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  font-family: serif;
+  font-family: Quicksand-Light, serif;
 }
 .carousel-control .icon-prev:before {
   content: '\2039';
