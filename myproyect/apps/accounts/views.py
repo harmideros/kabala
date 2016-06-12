@@ -34,6 +34,10 @@ def registro_usuario_view(request):
             password = cleaned_data.get('password')
             email = cleaned_data.get('email')
             photo = cleaned_data.get('photo')
+
+            if photo==None:
+                photo = 'profiles/dumy.png'
+
             # E instanciamos un objeto User, con el username y password
             user_model = User.objects.create_user(username=username, password=password)
             # Añadimos el email

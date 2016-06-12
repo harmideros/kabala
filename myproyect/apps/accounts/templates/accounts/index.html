@@ -3,14 +3,10 @@
 {% block title %}Perfil de usuario{% endblock title %}
 
 {% block accounts_content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="page-header"><h2>Perfil de usuario</h2></div>
-	Hola de nuevo {{ user.username|title }}<br>{{ user.email}}
+
+<div class="page-header"><h1>Perfil de usuario</h1></div>
+	<h2>{{ user.username|title }}</h2><h4>{{ user.email}}</h4><br>
 	<div>
-		<img src="/media/{{ user.userprofile.photo }}" height=50% width=50% alt="Imagen de {{ user.username }}"/>
+		<img class="img-responsive img-circle" src="/media/{{ user.userprofile.photo }}" height=45% width=45% alt="Imagen de {{ user.username }}"/>
 	</div>
 {% endblock accounts_content %}
